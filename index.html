@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Color Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            transition: background-color 0.5s;
+        }
+        #color-display {
+            font-size: 24px;
+            margin: 20px;
+        }
+        input[type="color"] {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>RANDOM BACKGROUND COLOR </h1><!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <title>Responsive Blog</title>
+    </head>
+    <body>
+        
+            
+        </header>
+        
+        <nav>
+            <!-- Navigation links here -->
+        </nav>
+        
+        <main>
+            <article>
+                <h2>Blog Post Title</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit....</p>
+            </article>
+            <!-- More articles here -->
+        </main>
+        
+        <aside>
+            <!-- Sidebar content here -->
+        </aside>
+        
+        <footer>
+            <p>&copy; 2023 My Responsive Blog</p>
+        </footer>
+    </body>
+    </html>
+    <div id="color-display">Background Color: #FFFFFF</div>
+    <input type="color" id="color-picker">
+    <button id="generate-button">Generate Random Color</button>
+    <button id="copy-button">Copy Color Code</button>
+
+    <script>
+        const colorDisplay = document.getElementById("color-display");
+        const colorPicker = document.getElementById("color-picker");
+        const generateButton = document.getElementById("generate-button");
+        const copyButton = document.getElementById("copy-button");
+
+        // Initialize with a white background color
+        document.body.style.backgroundColor = "#FFFFFF";
+
+        // Function to generate and set a random background color
+        generateButton.addEventListener("click", () => {
+            const randomColor = getRandomColor();
+            document.body.style.backgroundColor = randomColor;
+            colorDisplay.textContent = `Background Color: ${randomColor}`;
+        });
+
+        // Function to copy the current background color to clipboard
+        copyButton.addEventListener("click", () => {
+            const bgColor = document.body.style.backgroundColor;
+            copyToClipboard(bgColor);
+            alert(`Copied: ${bgColor}`);
+        });
+
+        // Function to generate a random color in hexadecimal format
+        function getRandomColor() {
+            const letters = "0123456789ABCDEF";
+            let color = "#";
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        // Function to copy text to clipboard
+        function copyToClipboard(text) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textArea);
+        }
+    </script>
+</body>
+</html>
